@@ -3,6 +3,7 @@ package cmd_modpack
 import (
 	"fmt"
 
+	"github.com/oxodao/gradient-builder/services"
 	"github.com/spf13/cobra"
 )
 
@@ -33,6 +34,6 @@ var setCmd = &cobra.Command{
 		return fmt.Errorf("Unknown property name: %s", args[0])
 	},
 	Run: func(cmd *cobra.Command, args []string) {
-
+		services.GET.
 	},
 }

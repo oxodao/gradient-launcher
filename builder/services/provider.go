@@ -7,13 +7,16 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 
 	"github.com/oxodao/gradient-builder/database"
+	"github.com/oxodao/gradient-builder/model"
+	"github.com/oxodao/gradient-builder/orm"
 )
 
 var GET *Provider = nil
 
 type Provider struct {
-	DB       *sqlx.DB
-	Modrinth *Modrinth
+	DB        *sqlx.DB
+	Modrinth  *Modrinth
+	Workspace *model.Workspace
 }
 
 func Init(workspacePath string) error {
@@ -35,6 +38,8 @@ func Init(workspacePath string) error {
 		DB:       db,
 		Modrinth: &Modrinth{},
 	}
+
+	orm.Init(db)
 
 	return nil
 }
